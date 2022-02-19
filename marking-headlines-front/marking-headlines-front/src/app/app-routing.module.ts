@@ -1,0 +1,14 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HeadlineComponent } from './components/headline/headline.component';
+
+const routes: Routes = [
+{path: 'headline', component: HeadlineComponent },
+{ path: '',   redirectTo: '/headline', pathMatch: 'full' }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

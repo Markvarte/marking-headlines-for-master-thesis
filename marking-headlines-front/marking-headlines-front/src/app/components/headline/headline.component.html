@@ -1,0 +1,21 @@
+
+<div style="text-align: center" class="container">
+  <div class="row" *ngIf="!noHeadlinesMgs">
+    <div class="col-12 mb-4">
+    	<h3 class="mb-5 container border border-primary p-3">{{randomHeadline.title}}</h3>
+        <p> Ludzu atzimējiet, vai šīs virsraksts, pēc jūsu domām, ir klikšķēsma <i>(clickbait)</i>, daļēja klikšķēsma, vai ne klikšķēsma. <br> Jūs varat izlaist tekošo virsrakstu un novērtet citu, nospiežot izlaist.</p>
+        <p style="color:#808080"> Klikšķēsmas virsraksts ir tiešsaistes satura nosaukums, kas ir paredzēts, lai piesaistītu lasītāju un mudinātu viņu noklikšķināt uz saistīto saturu. Bieži vien klikšķēsmas virsraksts daļēji vai pilnībā neatbilst tiešsaistes saturam.</p>
+            <button type="button" (click)="saveEval('ir klikšķēsma')" class="btn btn-outline-danger mr-3 mt-3"> IR klikšķēsma</button>
+        	<button type="button" (click)="saveEval('daļēja klikšķēsma')" class="btn btn-outline-primary mr-3 mt-3"> Daļēja klikšķēsma</button>
+        	<button type="button" (click)="saveEval('nav klikšķēsma')" class="btn btn-outline-success mr-5 mt-3"> NAV klikšķēsma</button>
+        	<button type="button" (click)="skip()" class="btn btn-outline-dark ml-5 mt-3"> Izlaist </button>
+    </div>
+    <div *ngIf="lastHeadlineMgs" style="text-align: center" class="container border border-danger p-2">
+    	Tas ir pēdējais virsraksts!
+    </div>
+  </div>
+  <div class="row" *ngIf="noHeadlinesMgs" class="container border border-warning p-2">
+  	<p>Jūs novērtējat visus virskarkstus! Liels paldies par jūsu ieguldījumu darbā ! </p>
+  	<img src="../../assets/fox-thanks.jpg" alt="Fox say thank you! " width="300" height="400">
+  </div>
+</div>
