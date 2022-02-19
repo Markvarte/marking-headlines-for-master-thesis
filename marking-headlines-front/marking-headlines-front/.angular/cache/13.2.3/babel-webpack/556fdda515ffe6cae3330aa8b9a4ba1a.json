@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Headline {\n  constructor() {\n    this.id = 0;\n    this.title = '';\n    this.domen = '';\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
