@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  mariadb:
+    image: library/mariadb:10.5
+    container_name: mariadb-markvarte
+    volumes:
+      - ./db:/var/lib/mysql
+    env_file:
+      - db.env
+  headlines-server:
+    image: node:14-alpine
+    command: node /app/server.js
+    volumes:
+      - ./marking-headlines-server:/app 
+    depends_on:
+      - mariadb
+    ports:
+      - "9001:8080"
+    links:
+      - mariadb
+  hedlines-front-end:
+    image: nginx:1.21
+    volumes: 
+      - ./marking-headlines-front/marking-headlines-front/dist/marking-headlines-front:/usr/share/nginx/html    
+    ports:
+      - "9000:80"  

@@ -1,6 +1,6 @@
 module.exports = {
-  HOST: "localhost",
-  USER: "root",
+  HOST: "mariadb",
+  USER: "app",
   PASSWORD: "Clickbait",
   DB: "marking_headlines"
 };
