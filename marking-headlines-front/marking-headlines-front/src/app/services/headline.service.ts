@@ -6,7 +6,7 @@ import { Headline } from '../models/headline.model';
 
 import { ToastrService } from 'ngx-toastr';
 
-const baseUrl = 'http://localhost:8080/api/headlines';
+const baseUrl = "http://" + location.host.replace(":9000", ":9001") + "/api/headlines";
 
 @Injectable({
   providedIn: 'root'

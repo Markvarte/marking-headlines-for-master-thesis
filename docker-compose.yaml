@@ -1,10 +1,11 @@
 version: "3.8"
 services:
-  mariadb:
-    image: library/mariadb:10.5
-    container_name: mariadb-markvarte
+  myssql:
+    image: mysql:8.0.28
+    container_name: myssql-markvarte
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./db:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     env_file:
       - db.env
   headlines-server:
@@ -13,11 +14,11 @@ services:
     volumes:
       - ./marking-headlines-server:/app 
     depends_on:
-      - mariadb
+      - myssql
     ports:
       - "9001:8080"
     links:
-      - mariadb
+      - myssql
   hedlines-front-end:
     image: nginx:1.21
     volumes: 
