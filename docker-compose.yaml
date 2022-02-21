@@ -15,14 +15,12 @@ services:
       - ./marking-headlines-server:/app 
     depends_on:
       - myssql
+    network_mode: "host"
   hedlines-front-end:
     image: nginx:1.21
     volumes: 
       - ./marking-headlines-front/marking-headlines-front/dist/marking-headlines-front:/usr/share/nginx/html    
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-    # network_mode: "host"
-    ports:
-      - "80:80"
+    network_mode: "host"
     depends_on: 
       - headlines-server
-
