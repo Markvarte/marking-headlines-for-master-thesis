@@ -1,5 +1,5 @@
 module.exports = {
-  HOST: "myssql-markvarte",
+  HOST: "localhost",
   USER: "app",
   PASSWORD: "Clickbait",
   DB: "marking_headlines"
