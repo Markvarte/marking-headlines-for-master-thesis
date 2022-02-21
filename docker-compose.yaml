@@ -17,11 +17,9 @@ services:
       - myssql
     ports:
       - "9001:8080"
-    links:
-      - myssql
   hedlines-front-end:
     image: nginx:1.21
     volumes: 
       - ./marking-headlines-front/marking-headlines-front/dist/marking-headlines-front:/usr/share/nginx/html    
-    ports:
-      - "9000:80"  
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    network_mode: "host"
