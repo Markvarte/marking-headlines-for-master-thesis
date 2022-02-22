@@ -1,20 +1,40 @@
 /**
  * Remove focus styles for non-keyboard focus.
  */
-/*:focus:not(:focus-visible) {
+:focus:not(:focus-visible) {
   outline: 0;
   box-shadow: none;
-}*/
+}
+
 
 /**
  * Cross-browser styles for explicit focus via 
  * keyboard-based (eg Tab) navigation or the
  * .focus-visible utility class.
  */
-/*:focus,
+:focus,
 .focus-visible:focus:not(:focus-visible) {
   outline: 0;
   box-shadow:
     0 0 0 .2rem #fff,
     0 0 0 .35rem #069;
-}*/
+}
+
+@media (hover: none) {
+    .btn-outline-danger {
+        color: #dc3545;
+        background-color: white;
+    }
+    .btn-outline-success {
+        color: #28a745;
+        background-color: white;
+    }
+    .btn-outline-primary {
+        color: #007bff;
+        background-color: white;
+    }
+    .btn-outline-dark {
+        color: #343a40;
+        background-color: white;
+    }
+}
