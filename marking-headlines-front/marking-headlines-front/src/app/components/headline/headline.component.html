@@ -5,10 +5,10 @@
     	<h3 class="mb-5 container border border-primary p-3">{{randomHeadline.title}}</h3>
         <p> Lūdzu, atzīmējiet, vai jūsuprāt šis virsraksts ir klikšķēsma <i>(clickbait)</i>, ir daļēja klikšķēsma vai nav klikšķēsma. <br> Nederīga virsraksta gadījumā (piemēram, virsraksts nav latviski) nospiediet "Izlaist". </p>
         <p style="color:#808080"> Klikšķēsmām raksturīgs virsraksts parasti sola lasītājam atklāt svarīgu informāciju, kas virsrakstā ir slēpta. Galvenais klikšķēsmas uzdevums ir lasītājos radīt ziņkāri, bet līdz galam to neapmierināt, kamēr netiek atvērts saturs.</p>
-            <button clas="rem-focus" type="button" (click)="saveEval('ir klikšķēsma')" class="btn btn-outline-danger mr-3 mt-3"> IR klikšķēsma</button>
-        	<button type="button" (click)="saveEval('daļēja klikšķēsma')" class="btn btn-outline-primary mr-3 mt-3"> Daļēja klikšķēsma</button>
-        	<button type="button" (click)="saveEval('nav klikšķēsma')" class="btn btn-outline-success mr-5 mt-3"> NAV klikšķēsma</button>
-        	<button type="button" (click)="skip()" class="btn btn-outline-dark ml-5 mt-3"> Izlaist </button>
+            <a clas="rem-focus" type="button" (click)="saveEval('ir klikšķēsma')" class="btn btn-outline-danger mr-3 mt-3"> IR klikšķēsma</a>
+        	<a type="button" (click)="saveEval('daļēja klikšķēsma')" class="btn btn-outline-primary mr-3 mt-3"> Daļēja klikšķēsma</a>
+        	<a type="button" (click)="saveEval('nav klikšķēsma')" class="btn btn-outline-success mr-5 mt-3"> NAV klikšķēsma</a>
+        	<a type="button" (click)="skip()" class="btn btn-outline-dark ml-5 mt-3"> Izlaist </a>
     </div>
     <div *ngIf="lastHeadlineMgs" style="text-align: center" class="container border border-danger p-2">
     	Tas ir pēdējais virsraksts!
