@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeadlineComponent } from './components/headline/headline.component';
 
 const routes: Routes = [
-{path: 'headline', component: HeadlineComponent },
-{ path: '',   redirectTo: '/headline', pathMatch: 'full' }
+{ path: '',   component: HeadlineComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
