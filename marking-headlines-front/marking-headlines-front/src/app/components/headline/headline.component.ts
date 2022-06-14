@@ -28,7 +28,7 @@ getOrCreateUserNumberFromCookie(): string {
     // Get user number from sookies or create it.
     var userNumber = this.cookieService.get('number');
     if (!userNumber) {
-      this.cookieService.set('number', `${Date.now()}`, {expires: new Date("August 22, 2022 01:15:00")});
+      this.cookieService.set('number', `${Date.now()}`, {expires: new Date("August 22, 2023 01:15:00")});
       userNumber = this.cookieService.get('number');
     }
     return userNumber;
