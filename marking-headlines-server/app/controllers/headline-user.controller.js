@@ -36,31 +36,85 @@ exports.findByNumber = (req, res) => {
   const number = req.params.number;
   User.findByNumber(number, (err, title_ids) => {
       if (!title_ids) {
-    Headline.getAll((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving headlines."
-      });
-    else res.send(data);
-  });
+
+    User.findTitleIdsOver3((err, title_ids_over3) => {
+      if (!title_ids_over3) {
+          Headline.getAll((err, data) => {
+            if (err)
+              res.status(500).send({
+              message:
+              err.message || "Some error occurred while retrieving headlines."
+            });
+            else res.send(data);
+          });
+      }
+      else {
+        var titles_array = [];
+        for (var i = 0; i < title_ids_over3.length; i++) {
+        titles_array.push(title_ids_over3[i].title_id);
+        }
+
+        Headline.getNotMarked(titles_array, (err, data) => {
+            if (err)
+                res.status(500).send({
+                message:
+                err.message || "No not marked headlines found."
+              });
+            else {
+                res.send(data);
+                 }
+            })
+      }
+
+    });
+
+
   }
     else {
 
-      var marked_titles_array = [];
-      for (var i = 0; i < title_ids.length; i++) {
-        marked_titles_array.push(title_ids[i].title_id);
-      }
-      Headline.getNotMarked(marked_titles_array, (err, data) => {
-if (err)
-      res.status(500).send({
-        message:
-          err.message || "No not marked headlines found."
+      User.findTitleIdsOver3((err, title_ids_over3) => {
+        if (!title_ids_over3) {
+                var marked_titles_array = [];
+                for (var i = 0; i < title_ids.length; i++) {
+                marked_titles_array.push(title_ids[i].title_id);
+               }
+                Headline.getNotMarked(marked_titles_array, (err, data) => {
+                   if (err)
+                     res.status(500).send({
+                     message:
+                     err.message || "No not marked headlines found."
+                    });
+                   else {
+                     res.send(data);
+                    }
+                }) 
+
+        }
+        else {
+                var marked_titles_array = [];
+                for (var i = 0; i < title_ids.length; i++) {
+                marked_titles_array.push(title_ids[i].title_id);
+               }
+
+                for (var i = 0; i < title_ids_over3.length; i++) {
+                   marked_titles_array.push(title_ids_over3[i].title_id);
+                }
+
+                Headline.getNotMarked(marked_titles_array, (err, data) => {
+                   if (err)
+                     res.status(500).send({
+                     message:
+                     err.message || "No not marked headlines found."
+                    });
+                   else {
+                     res.send(data);
+                    }
+                })                       
+        }
       });
-    else {
-      res.send(data);
-    }
-      })
+
+
+      
   }
   });
 

@@ -39,6 +39,25 @@ User.findByNumber = (number, result) => {
   });
 };
 
+User.findTitleIdsOver3 = (result) => {
+  sql.query(`SELECT title_id FROM users GROUP BY title_id HAVING count(id)>3`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found title_ids: ", res);
+      result(null, res);
+      return;
+    }
+
+    // not found title_ids which marked over 3 times
+    result({ kind: "not_found" }, null);
+
+  });
+};
 
 
 module.exports = User;
